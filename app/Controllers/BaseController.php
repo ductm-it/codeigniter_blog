@@ -49,4 +49,14 @@ class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    public function loadMasterLayout($data, $title, $content, $dataLayout = []){
+
+        $data['title'] = $title;
+        $data['leftMenu'] = view('admin/layout/left-menu');
+        $data['header'] = view('admin/layout/header');
+        $data['footer'] = view('admin/layout/footer');
+        $data['content'] = view($content, $dataLayout);
+        return $data;
+    }
 }
